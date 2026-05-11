@@ -10,7 +10,7 @@ spec:
     path: deployment
   destination:
     server: https://kubernetes.default.svc
-    namespace: user-mamorin
+    namespace: user-mateom
   syncPolicy:
     automated:
       selfHeal: true
