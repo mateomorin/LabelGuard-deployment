@@ -29,19 +29,6 @@ spec:
             uv run uvicorn app.api:app --host 0.0.0.0 --port 8000
         ports:
         - containerPort: 8000
-        # Ajout des sondes de santé pour Argo CD
-        readinessProbe:
-          httpGet:
-            path: /docs
-            port: 8000
-          initialDelaySeconds: 15
-          periodSeconds: 10
-        livenessProbe:
-          httpGet:
-            path: /docs
-            port: 8000
-          initialDelaySeconds: 20
-          periodSeconds: 20
         env:
           - name: MLFLOW_TRACKING_URI
             valueFrom: { secretKeyRef: { name: labelguard-train, key: MLFLOW_TRACKING_URI } }
